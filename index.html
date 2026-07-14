@@ -6,7 +6,6 @@
 <meta name="theme-color" content="#4F8BFF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>NIICS Salon Management</title>
-<link rel="stylesheet" href="about.html">
 <link rel="icon" type="image/png" href="Anjuman.png">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -213,6 +212,25 @@ input,select,textarea{font-family:var(--fb);outline:none}
 @media(max-width:480px){.sgrid{grid-template-columns:1fr}.ts-grid{grid-template-columns:repeat(3,1fr)}.tbl-toolbar{flex-direction:column;align-items:stretch}.tbl-filters{flex-direction:column}}
 .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:45}
 .sidebar-overlay.active{display:block}
+
+/* About Modal Styles */
+.about-modal-c{position:fixed;inset:0;z-index:250;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px;overflow-y:auto}
+.about-modal-c.active{display:flex}
+.about-modal{background:var(--bg-cs);border:1px solid var(--bd);border-radius:var(--r-xl);padding:32px;width:100%;max-width:650px;max-height:90vh;overflow-y:auto;position:relative}
+.about-modal .mcls{position:absolute;top:14px;right:14px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg-t);color:var(--tx-s);border:none;cursor:pointer;transition:var(--tr)}
+.about-modal .mcls:hover{color:var(--tx-p)}
+.about-modal h2{font-size:24px;margin-bottom:4px;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.about-modal .sub-title{color:var(--tx-s);font-size:14px;margin-bottom:20px}
+.about-modal .bio-section{margin-bottom:22px}
+.about-modal .bio-section h3{font-size:16px;color:var(--blue);margin-bottom:12px;border-left:3px solid var(--blue);padding-left:12px;display:flex;align-items:center;gap:8px}
+.about-modal .bio-section h3 i{width:18px;height:18px}
+.about-modal .bio-section p{font-size:14px;color:var(--tx-s);line-height:1.8;margin-bottom:8px}
+.about-modal .bio-detail{display:flex;padding:6px 0;border-bottom:1px solid var(--bd);font-size:14px;align-items:baseline}
+.about-modal .bio-detail .label{font-weight:600;color:var(--tx-p);min-width:140px;flex-shrink:0}
+.about-modal .bio-detail .value{color:var(--tx-s)}
+.about-modal .quote-box{background:linear-gradient(135deg,rgba(79,139,255,0.08),rgba(168,85,247,0.08));border-radius:var(--r-m);padding:18px 22px;text-align:center;margin-top:16px;border:1px solid rgba(79,139,255,0.12)}
+.about-modal .quote-box p{font-style:italic;font-size:16px;color:var(--tx-p);font-family:var(--fh)}
+.about-modal .quote-box .author{font-style:normal;font-size:13px;color:var(--tx-m);margin-top:4px}
 </style>
 </head>
 <body>
@@ -277,11 +295,62 @@ input,select,textarea{font-family:var(--fb);outline:none}
   </div>
 </div>
 
+<!-- ABOUT MODAL -->
+<div class="about-modal-c" id="aboutModal">
+  <div class="about-modal">
+    <button class="mcls" onclick="closeAboutModal()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+    <h2>👤 Dilshad Ansari</h2>
+    <p class="sub-title">Personal Biography | Chapter One</p>
+
+    <!-- Personal Information -->
+    <div class="bio-section">
+      <h3><i data-lucide="clipboard-list" style="width:18px;height:18px"></i> Personal Information</h3>
+      <div class="bio-detail"><span class="label">Full Name</span><span class="value">Dilshad Ansari</span></div>
+      <div class="bio-detail"><span class="label">Nickname</span><span class="value">Dillu</span></div>
+      <div class="bio-detail"><span class="label">Date of Birth</span><span class="value">12 August 2008</span></div>
+      <div class="bio-detail"><span class="label">Birth Place</span><span class="value">Ramgarh, Palamu, Jharkhand - 822110</span></div>
+      <div class="bio-detail"><span class="label">Current Location</span><span class="value">Kerala, India</span></div>
+      <div class="bio-detail"><span class="label">Languages</span><span class="value">English, Hindi, Urdu &amp; Arabic</span></div>
+      <div class="bio-detail"><span class="label">Father</span><span class="value">MD Ayub Ansari (Government Teacher)</span></div>
+      <div class="bio-detail"><span class="label">Mother</span><span class="value">Salda Bibi (Housewife)</span></div>
+      <div class="bio-detail"><span class="label">Family Members</span><span class="value">6 Members</span></div>
+      <div class="bio-detail"><span class="label">Biggest Inspiration</span><span class="value">My own work inspires me.</span></div>
+      <div class="bio-detail"><span class="label">Values</span><span class="value">Education, Discipline, Responsibility &amp; Hard Work</span></div>
+      <div class="bio-detail"><span class="label">Life Turning Point</span><span class="value">Joining Darul Huda Islamic University (DHIU)</span></div>
+    </div>
+
+    <!-- Chapter 1 -->
+    <div class="bio-section">
+      <h3><i data-lucide="book-open" style="width:18px;height:18px"></i> Chapter 1 - The Boy Who Chose Two Worlds</h3>
+      <p>My name is <strong>Dilshad Ansari</strong>, although most people know me as <strong>Dillu</strong>. I was born on <strong>12 August 2008</strong> in <strong>Ramgarh, Palamu, Jharkhand</strong>. From a young age I believed that dreams should never be limited by the place where a person is born.</p>
+      <p>Today I am studying at <strong>Darul Huda Islamic University (DHIU)</strong> in Kerala. Moving away from my hometown gave me a new perspective on life. It helped me grow academically, spiritually, and personally.</p>
+      <p>I can communicate in <strong>English, Hindi, Urdu, and Arabic</strong>. Each language has shaped my journey in a different way and opened new opportunities to learn from different cultures and communities.</p>
+      <p>My father, <strong>MD Ayub Ansari</strong>, is a government teacher who taught me the importance of education and discipline. My mother, <strong>Salda Bibi</strong>, is a homemaker whose love, patience, and sacrifices have always supported my dreams.</p>
+      <p>Our family consists of six members. Living in a close-knit family taught me respect, responsibility, and the importance of helping others.</p>
+      <p>One of the most unique things about me is that my greatest inspiration is my own work. Every project I complete motivates me to improve myself and learn something new. I believe that action creates inspiration.</p>
+      <p>Joining Darul Huda Islamic University became one of the biggest turning points of my life. It strengthened my faith while encouraging me to think about how technology can be used for education and the benefit of society.</p>
+      <p>This is only the first chapter of my story. I hope to continue learning, building meaningful projects, and contributing to both Islamic scholarship and modern technology.</p>
+    </div>
+
+    <!-- Quote -->
+    <div class="quote-box">
+      <p>✨ "Some people choose between tradition and technology. I chose to learn both."</p>
+      <div class="author">— Dilshad Ansari</div>
+    </div>
+
+    <div style="text-align:center;margin-top:18px;color:var(--tx-m);font-size:12px;border-top:1px solid var(--bd);padding-top:14px">
+      © 2026 Dilshad Ansari | Personal Biography
+    </div>
+  </div>
+</div>
+
 <!-- ==================== LANDING PAGE ==================== -->
 <div id="landingPage">
   <nav class="lnav">
+    <div class="nlogo"><div class="nlogo-i"><i data-lucide="scissors" style="width:16px;height:16px"></i></div>NIICS Salon</div>
     <div class="nacts">
       <button class="ttb" onclick="toggleTheme()" title="Toggle theme"><i data-lucide="sun" style="width:18px;height:18px" id="landingThemeIcon"></i></button>
+      <button class="btn btn-s" onclick="openAboutModal()"><i data-lucide="user" style="width:16px;height:16px"></i> About</button>
       <button class="btn btn-p" onclick="showLogin()"><i data-lucide="log-in" style="width:16px;height:16px"></i> Login</button>
     </div>
   </nav>
@@ -967,6 +1036,35 @@ async function handleStudentLogin(e) {
   showStudentPortal(user);
   toast('Welcome, '+name+'!','success');
 }
+
+/* ===================================================================
+   ABOUT MODAL
+   =================================================================== */
+function openAboutModal() {
+  document.getElementById('aboutModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  lucide.createIcons();
+}
+
+function closeAboutModal() {
+  document.getElementById('aboutModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Close modal on overlay click
+document.getElementById('aboutModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAboutModal();
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeAboutModal();
+    closeEditModal();
+    closeQR();
+    hideLogin();
+  }
+});
 
 /* ===================================================================
    ADMIN DASHBOARD
